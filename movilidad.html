@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Movilidad en Bogotá</title>
+
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material-fullpalette.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/ripples.min.css">
+	<link href="https://cdn.rawgit.com/FezVrasta/dropdown.js/master/jquery.dropdown.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+	
+<style>
+
+
+
+      /* Always set the map height explicitly to define the size of the div
+      * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+
+
+
+
+
+
+	*{
+    font-family: 'Open Sans', sans-serif;
+	}
+
+	.navbar{
+	padding: 12px 22px 2px 4px;
+    line-height: 18px;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: 600;
+	}
+ 
+li a:hover 
+a:hover {
+	color: #09045d;
+	text-decoration: none;
+}
+
+body{
+font-family: 'Open Sans', sans-serif;
+}
+
+.parallax {
+    /* The image used */
+    background-image: url("https://assets.metrolatam.com/co/2015/08/05/bogota-27-03-2-especialmovilidad-juanpablopino-5-1600x800.jpg");
+
+    /* Set a specific height */
+    min-height: 500px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+</style>
+</head>
+<body>
+
+	<div class="container-fluid">
+			<header>
+				<nav class="navbar navbar-fixed-top navbar'green">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+
+						<a class="navbar-brand" href="#">
+
+							<i class="fa fa-map-marker" style="font-size:30px;color:white;"></i>
+						 </i> Movilidad en Bogotá
+
+						</a>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse  navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="#">Semaforización<span class="sr-only">(current)</span></a></li>
+							<li><a href="#estadisticas">Rutas frecuentes</a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Datos<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Sigue intentando</a></li>
+								</ul>
+							</li>
+						</ul>
+
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones <span class="caret">  </span>  </a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Sigue intentando</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div><!-- /.navbar-collapse -->
+				</div>
+		</header><br>
+		<br>
+		<br><br>
+
+		<div class="container">
+      <div id="map"></div>
+    <script>
+      // This example creates circles on the map, representing populations in North
+      // America.
+
+      // First, create an object containing LatLng and population for each city.
+      var citymap = {
+
+        zona1: {
+          center: {lat: 4.6118606, lng: -74.0777769},
+          population: 15837,
+          color: '#D80000'
+        },
+        zona2: {
+          center: {lat: 4.6169423, lng: -74.0760422},
+          population: 714856,
+          color: '#1AB11A'
+        },
+
+        tramo1097: {
+          center: {lat: 5.0252154, lng: -74.0011074},
+          population: 1550000,
+          color:'#FFFF2D'}
+
+
+/*tramo1:{center:{5.0252154, -74.0011074}, color:'#FFFF2A'},*/
+
+
+
+      };
+
+      function initMap() {
+        // Create the map.
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: {lat: 4.6169423, lng: -74.0760422},
+          mapTypeId: 'terrain'
+        });
+
+        // Construct the circle for each value in citymap.
+        // Note: We scale the area of the circle based on the population.
+        for (var city in citymap) {
+          // Add the circle for this city to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: '#000000',
+            strokeOpacity: 0.4,
+            strokeWeight: 2,
+            fillColor: citymap[city].color,
+            fillOpacity: 0.5,
+            map: map,
+            center: citymap[city].center,
+            radius: Math.sqrt(citymap[city].population) * 0.2          });
+        }
+      }
+    </script>
+
+		</div>
+		<div class="container-fluid text-center contenido" id="estadisticas">
+			<h1>Movilidad en la ciudad de Bogotá</h1><br>
+			
+			<div class="col-sm-4">
+				<div class="well">
+					<strong><h2><a href="mapa.html">Mapas de calor de semáforos</a></h2></strong>
+				</div>
+			</div>
+			
+			<div class="col-sm-4">
+				<div class="well">
+					<strong><h2><a href="mapa2.html">Movilidad</a></h2></strong>
+				</div>
+			</div>
+
+			<div class="col-sm-4">
+				<div class="well">
+					<strong><h2><a href="pie_medios.jpeg">Medios de transporte</a></h2></strong>
+				</div>
+			</div>
+		
+		</div>
+		<div class="parallax"></div>
+	</div><br>
+    <div class="jumbotron">
+    <div class="container text-center">
+        <h2>Detrás de cámaras</h2>
+        <div class="com-md-3">
+          <a href="Mejorar tiempo de desplazamiento.html">
+            <img src="http://curiosidades.com/wp-content/uploads/2013/12/0_b8ebe_9003707b_orig.jpg" height="100px" alt="">
+          </a>
+        </div>
+    </div>
+    </div>
+
+    <div class="jumbotron">
+    <div class="container text-center">
+        <h2>Tecnologias usadas</h2>
+        <div class="com-md-3">
+            
+            <img src="https://librebits.info/logos/bootstrap.svg" height="30px" alt="">
+            <img src="http://www.hashin.in/hash/_layout/images/expertise/jquery.gif" height="30px" alt="">
+            <img src="https://www.python.org/static/opengraph-icon-200x200.png" height="30px">
+            <img src="https://www.brandsoftheworld.com/sites/default/files/styles/logo-thumbnail/public/082014/js1_0.png?itok=BqOjTfHU" height="30px">
+            <img src="http://icon-icons.com/icons2/844/PNG/512/HTML5_icon-icons.com_67090.png" height="30px">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/724px-R_logo.svg.png" height="30px">
+        </div>
+    </div>
+    </div>
+
+	<footer class="container-fluid text-center">
+		<p>Euclidianos de la Movilidad Corporation</p>
+	</footer>
+
+      <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPoQGgx60unbzVYKlH6hWfjRawfSSpkt0&callback=initMap">
+  </script>
+
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>
