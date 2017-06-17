@@ -1,9 +1,6 @@
 # datosbogota
 Aplicación desarrollada para aprovechar los datos de open data Bogotá
 
-# datosbogota
-Aplicación desarrollada para aprovechar los datos de open data Bogotá
-
 # Alternativa para optimizar el trafico en bogota
 
 Se busca por medio de analisis de datos encontrar estrategias que ayuden a descongestionar el trafico en Bogota. Dichas estrategias
@@ -21,3 +18,19 @@ Para este propositos es necesario hacer las siguientes investigaciones:
 
 - Medir la descincronia de los semaforos.
 #### Resultados primeras entrevistas: [Desarrollo del producto](desarrollo_producto.md)
+
+# Problema
+
+El tiempo de movilidad y la incomodidad en el transporte de Bogotá
+
+# Como podemos solucionarlo
+
+Politicas de comparatir vehiculo, y trabajo remnoto.
+
+# Tipo de ususario
+
+Empleados y empleadores
+
+# Plataforma
+
+Aplicación web para las compañias y empleados
