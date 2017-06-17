@@ -15,6 +15,7 @@
 - precio trayecto: 200 - 2300 trayecto
 - mucho accidente
 - es demorada la espera del servicio.
+
 **3)** Hombre
 - tiempo trayecto(casa-trabajo): 40 min
 - tiempo trayecto(trabajo-casa): 1:20 - 1:30
@@ -23,7 +24,7 @@
 - SITP  es mas rapido
 - Buseta para mucho, pero es mas rapida y mejor en la madrugada.
 - Las busetas pasan mas y el trayecto es de un costo de 1600 - 2000
--
+
 **4)** Hombre
 - Piensa que el servicio publico es un caos
 - Mucho vehiculo particular
