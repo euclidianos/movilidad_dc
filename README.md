@@ -20,3 +20,4 @@ Para este propositos es necesario hacer las siguientes investigaciones:
 - Simulacion del trafico en Bogota: velocidad de desplazamiento disminuyendo el numero de veiculos particulares.
 
 - Medir la descincronia de los semaforos.
+#### Resultados primeras entrevistas: [Desarrollo del producto](desarrollo_producto.md)
